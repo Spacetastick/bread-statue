@@ -1,3 +1,5 @@
+//Noah Cil, 10/23/19, Conversion calculator for imperial units to metric units
+
 package unitConversion;
 
 public class UnitConversion {
@@ -17,7 +19,6 @@ public class UnitConversion {
 			return false;
 		}
 		else {
-			validConversion(unitFrom, unitTo);
 			return true;
 		}	
 		
@@ -37,29 +38,89 @@ public class UnitConversion {
 			return false;
 		}
 		else {
-			convert(unitFrom, unitTo, fromAmount); //find a way to set fromAmount
 			return true;
 		}
 	}
 	
-	public static double convert(String from, String to, double amount) { //do i need strings here?
+	public static double convert(String from, String to, double amount) {
 		unitFrom = from;
 		unitTo = to;
 		fromAmount = amount;
 		
-		
-		
+		if (unitFrom.equals("fl. oz")) {
+			if (unitTo.equals("ml")) {
+				fromAmount*=29.574;
+			}
+			else if (unitTo.equals("l")) {
+				fromAmount/=33.814;
+			}
+		}
+		else if (unitFrom.equals("gal")) {
+			if (unitTo.equals("ml")) {
+				fromAmount*=3785.412;
+			}
+			else if (unitTo.equals("l")) {
+				fromAmount*=3.785;
+			}
+		}
+		else if (unitFrom.equals("oz")) {
+			if (unitTo.equals("g")) {
+				fromAmount*=28.35;
+			}
+			else if (unitTo.equals("kg")) {
+				fromAmount/=35.274;
+			}
+		}
+		else if (unitFrom.equals("lb")) {
+			if (unitTo.equals("g")) {
+				fromAmount*=453.592;
+			}
+			else if (unitTo.equals("kg")) {
+				fromAmount/=2.205;
+			}
+		}
+		else if (unitFrom.equals("in")) {
+			if (unitTo.equals("mm")) {
+				fromAmount*=25.4;
+			}
+			else if (unitTo.equals("cm")) {
+				fromAmount*=2.54;
+			}
+			else if (unitTo.equals("m")) {
+				fromAmount/=39.37;
+			}
+			else if (unitTo.equals("km")) {
+				fromAmount/=39370.079;
+			}
+		}
+		else if (unitFrom.equals("ft")) {
+			if (unitTo.equals("mm")) {
+				fromAmount*=304.8;
+			}
+			else if (unitTo.equals("cm")) {
+				fromAmount*=30.48;
+			}
+			else if (unitTo.equals("m")) {
+				fromAmount/=3.281;
+			}
+			else if (unitTo.equals("km")) {
+				fromAmount/=3280.84;
+			}
+		}
+		else if (unitFrom.equals("mi")) {
+			if (unitTo.equals("mm")) {
+				fromAmount*=1609344;
+			}
+			else if (unitTo.equals("cm")) {
+				fromAmount*=160934.4;
+			}
+			else if (unitTo.equals("m")) {
+				fromAmount*=1609.344;
+			}
+			else if (unitTo.equals("km")) {
+				fromAmount*=1.609;
+			}
+		}
+		return fromAmount;
 	}
 }
-/* 
-5.4.  Unit conversion. Write a unit conversion program that asks the users from which 
-unit they want to convert (fl. oz, gal, oz, lb, in, ft, mi) and to which unit they want 
-to 
-convert (ml, l, g, kg, mm, cm, m, km). Reject incompatible conversions (such as gal → km).
-Ask for the value to be converted, then display the result:
-
-Convert from? gal
-Convert to? ml
-Value? 2.5
-2.5 gal = 9462.5 ml
-*/

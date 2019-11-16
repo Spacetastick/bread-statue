@@ -12,28 +12,17 @@ public class FrogSimulation {
 	}
 	
 	private int hopDistance(){
-		// Returns an integer representing the distance, in inches, to be moved when the frog hops
 		hopDistance = (int)(Math.random() * 45) -15;
 		return hopDistance;
 	}
 	
 	public boolean simulate() {
-		
-		/* Simulates a frog attempting to reach the goal as described in part (a).
-		Returns true if the frog successfully reached or passed the goal during the simulation;
-		false otherwise. */
-		/* The frog hops until one of the following conditions becomes true:
-		• The frog has reached or passed the goal.
-		• The frog has reached a negative position.
-		• The frog has taken the maximum number of hops without reaching the goal. 
-		*/
-		
 		int hops = 0;
 		int hopLength = hopDistance();
 		//System.out.println("hopLength is: " + hopLength);
 		for (int distance = 0; distance < goalDistance; distance += 0) {
-			System.out.println("Distance is: " + distance);
-			System.out.println("Hopping " + hopLength + " inches!");
+			//System.out.println("Distance is: " + distance);
+			//System.out.println("Hopping " + hopLength + " inches!");
 			distance += hopLength;
 			hops++;
 			if (distance < 0) {
@@ -53,45 +42,43 @@ public class FrogSimulation {
 		else {
 			return false;
 		}
-		
 	}
 	
 	public double runSimulations(int num, FrogSimulation frog) {
-		
-		/* Runs num simulations and returns the proportion of simulations in which the frog
-		successfully reached or passed the goal.
-		Precondition: num > 0  */
 		int successfulSims = 0;
 		for (int sims = num; sims > 0; sims--) {
 			boolean test = frog.simulate();
-			//System.out.println(test);
+			//System.out.println("test is " + test);
 			if (test) {
 				successfulSims++;
+				//System.out.println(successfulSims + " successful sims");
 			}
 		}
-		
-		return successfulSims/num;
+		//System.out.println("loop is over");
+		//System.out.println("successful sims is: " + successfulSims + ", num is: " + num);
+		double successRate = successfulSims/(double)num;
+		return successRate;
 	}
 	
 	public static void main(String[] args) {	
 		Scanner input = new Scanner(System.in);
 		System.out.println("Welcome to Frog Simulation!");
-		System.out.println("What is the goal distance?");
+		System.out.print("Name your frog: ");
+		String name = input.nextLine();
+		System.out.println("What is " + name + "'s goal distance?");
 		int goal = input.nextInt();
-		System.out.println("What is the max hops?");
+		System.out.println("What is the max amount of hops?");
 		int hops = input.nextInt();
 		System.out.println("How many simulations do you want to run?");
 		int sims = input.nextInt();
 		input.close();
 		FrogSimulation frog = new FrogSimulation(goal, hops);
+		System.out.println("For " + sims + " simulations, " + name + " must hop " + goal + " inches in no more than " + hops + " hops.");
 		
-		while (sims > 0) {
-			System.out.println(frog.runSimulations(sims, frog));
-			sims--;
-		}
-
+		double successRate = frog.runSimulations(sims, frog);
+		double successPercentage = successRate * 100;
+		System.out.println(name + " the frog was successful in " + successPercentage + "% of simulations!");
+		//I DID IT WOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 	}
 	
 }
-
-//bruh wtf github
