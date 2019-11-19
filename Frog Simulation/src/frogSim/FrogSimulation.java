@@ -44,10 +44,10 @@ public class FrogSimulation {
 		}
 	}
 	
-	public double runSimulations(int num, FrogSimulation frog) {
+	public double runSimulations(int num) {
 		int successfulSims = 0;
 		for (int sims = num; sims > 0; sims--) {
-			boolean test = frog.simulate();
+			boolean test = this.simulate();
 			//System.out.println("test is " + test);
 			if (test) {
 				successfulSims++;
@@ -75,7 +75,7 @@ public class FrogSimulation {
 		FrogSimulation frog = new FrogSimulation(goal, hops);
 		System.out.println("For " + sims + " simulations, " + name + " must hop " + goal + " inches in no more than " + hops + " hops.");
 		
-		double successRate = frog.runSimulations(sims, frog);
+		double successRate = frog.runSimulations(sims);
 		double successPercentage = successRate * 100;
 		System.out.println(name + " the frog was successful in " + successPercentage + "% of simulations!");
 		//I DID IT WOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
