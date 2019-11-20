@@ -78,7 +78,6 @@ public class FrogSimulation {
 		double successRate = frog.runSimulations(sims);
 		double successPercentage = successRate * 100;
 		System.out.println(name + " the frog was successful in " + successPercentage + "% of simulations!");
-		//I DID IT WOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 	}
 	
 }
