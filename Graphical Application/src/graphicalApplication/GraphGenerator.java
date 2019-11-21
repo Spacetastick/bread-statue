@@ -10,63 +10,44 @@ public class GraphGenerator extends JFrame{
 		
 		Graphics2D g2 = (Graphics2D) g;
 		
-		/*
-		Line2D line1 = new Line2D.Float(100, 100, 300, 100);
-		Line2D line2 = new Line2D.Float(300, 100, 300, 300);
-		Line2D line3 = new Line2D.Float(300, 300, 100, 300);
-		Line2D line4 = new Line2D.Float(100, 300, 100, 110);
-		Line2D line5 = new Line2D.Float(100, 110, 290, 110);
-		Line2D line6 = new Line2D.Float(290, 110, 290, 290);
-		Line2D line7 = new Line2D.Float(290, 290, 110, 290);
-		Line2D line8 = new Line2D.Float(110, 290, 110, 120);
-		Line2D line9 = new Line2D.Float(110, 120, 280, 120);
-		Line2D line10 = new Line2D.Float(280, 120, 280, 280);
-		Line2D line11 = new Line2D.Float(280, 280, 120, 280);
-		Line2D line12 = new Line2D.Float(120, 280, 120, 130);
-		Line2D line13 = new Line2D.Float(120, 130, 270, 130);
-		g2.draw(line1);
-		g2.draw(line2);
-		g2.draw(line3);
-		g2.draw(line4);
-		g2.draw(line5);
-		g2.draw(line6);
-		g2.draw(line7);
-		g2.draw(line8);
-		g2.draw(line9); 
-		g2.draw(line10);
-		g2.draw(line11);
-		g2.draw(line12);
-		g2.draw(line13);*/
+		int B = 100;
+		int C = 300; 
+		int A = 100; 
+		boolean initial = true;
 		
-		int startY = 100;
-		int endX = 300; 
-		int newY = 100; 
-		int count = 0;
-		
-		for (int i = 2; i > 0; i--) {
+		for (int i = 11; i > 0; i--) {
 			
-			Line2D line1 = new Line2D.Float(newY, startY, endX, startY);
-			Line2D line2 = new Line2D.Float(endX, startY, endX, endX);
-			Line2D line3 = new Line2D.Float(endX, endX, startY, endX);
-			Line2D line4 = new Line2D.Float(newY, endX, newY, startY);
+			Line2D line1 = new Line2D.Float(A, B, C, B);
+			Line2D line2 = new Line2D.Float(C, B, C, C);
+			Line2D line3 = new Line2D.Float(C, C, B, C);
+
 			
-			g2.draw(line1);
-			count++;
-			System.out.println("line " + count + " is (" + newY + ", " + startY + ", " + endX + ", " + startY + ")");
-			g2.draw(line2);
-			count++;
-			System.out.println("line " + count + " is (" + endX + ", " + startY + ", " + endX + ", " + endX + ")");
-			g2.draw(line3);
-			count++;
-			System.out.println("line " + count + " is (" + endX + ", " + endX + ", " + startY + ", " + endX + ")");
-			newY = startY;
-			startY += 10;
-			g2.draw(line4);
-			count++;
-			System.out.println("line " + count + " is (" + newY + ", " + endX + ", " + newY + ", " + startY + ")");
-			endX -= 10;
+			if (initial) {
+				
+				Line2D line4 = new Line2D.Float(A, C, A, B+10);
+
+				g2.draw(line1);
+				g2.draw(line2);
+				g2.draw(line3);
+				g2.draw(line4);
+				B+=10;
+				C -= 10;
+				initial = false;
+				
+			} 
+			else { 
+				Line2D line4 = new Line2D.Float(A, C+10, A, B);
+				
+				g2.draw(line1);
+				g2.draw(line2);
+				g2.draw(line3);
+				A = B;
+				B += 10;
+				g2.draw(line4);
+				C -= 10;
+				
+			}
 		} 
-		
 	}
 
 	public static void main(String[] args) {
