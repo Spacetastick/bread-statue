@@ -4,24 +4,33 @@ import java.util.Scanner;
 
 public class PredatorPraySimulation {
 	
-	static double A, B, C, D, preyPop, predatorPop, periods;
+	static double A, B, C, D;
+	static int periods, preyPop, predatorPop;
 	
-	public static int predatorPop() { //add constructors for equations
-		
-		//predator(n+1) = predator(n) times (1 - C + D times prey(n))
-		predatorPop = predatorPop * (1 - C + D * preyPop);
+	public static int predatorPop() {
+		double predators = predatorPop * (1 - C + D * preyPop);
+		return (int)predators;
 	}
-	//fix problem for both of pop numbers being changed and accidentally affecting 
-	//eachother when executed one after another
+
 	public static int preyPop() {
+		double preys = preyPop * (1 + A - B * predatorPop);
+		return (int)preys;
+	}
+	
+	public static void simulate(int periods) {
 		
-		//prey(n+1) = prey(n) times (1 + A - B times predator(n))
-		preyPop = preyPop * (1 + A - B * predatorPop);
+		for (int i = 0; i <= periods; i++) {
+			System.out.println("Predator population for period " + i + " is " + predatorPop);
+			System.out.println("Prey population for period " + i + " is " + preyPop);
+			int numPred = predatorPop();
+			int numPrey = preyPop();
+			predatorPop = numPred;
+			preyPop = numPrey;
+		}
 		
 	}
 	
 	public static void main(String[] args) {
-		
 		System.out.println("Welcome to Predator-Prey Simulation!");
 		Scanner input = new Scanner(System.in);
 		System.out.println("What is the rate at prey which birth exceeds natural death?");
@@ -40,10 +49,7 @@ public class PredatorPraySimulation {
 		periods = input.nextInt();
 		input.close();
 		
-		
-		
-		
-		
+		simulate(periods);
 	}
 
 }
