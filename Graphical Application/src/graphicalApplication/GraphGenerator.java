@@ -16,14 +16,11 @@ public class GraphGenerator extends JFrame{
 		boolean initial = true;
 		
 		for (int i = 11; i > 0; i--) {
-			
 			Line2D line1 = new Line2D.Float(A, B, C, B);
 			Line2D line2 = new Line2D.Float(C, B, C, C);
 			Line2D line3 = new Line2D.Float(C, C, B, C);
 
-			
 			if (initial) {
-				
 				Line2D line4 = new Line2D.Float(A, C, A, B+10);
 
 				g2.draw(line1);
@@ -33,7 +30,6 @@ public class GraphGenerator extends JFrame{
 				B+=10;
 				C -= 10;
 				initial = false;
-				
 			} 
 			else { 
 				Line2D line4 = new Line2D.Float(A, C+10, A, B);
@@ -45,11 +41,9 @@ public class GraphGenerator extends JFrame{
 				B += 10;
 				g2.draw(line4);
 				C -= 10;
-				
 			}
 		} 
 	}
-
 	public static void main(String[] args) {
 		JFrame window = new JFrame();
 		
@@ -63,15 +57,10 @@ public class GraphGenerator extends JFrame{
 			
 			public void paintComponent(Graphics graph) {
 		
-				drawSpiral(graph);
-				
+				drawSpiral(graph);	
 			}
-			
 		};
-		
 		window.add(Graph);
 		window.setVisible(true);
-		
 	}
-	
 }
