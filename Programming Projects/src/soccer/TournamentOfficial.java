@@ -1,0 +1,24 @@
+package soccer;
+
+public class TournamentOfficial {
+
+	private int games, goals; //# of games played and goals scored all teams total
+	
+	public TournamentOfficial() {
+	}
+	
+	public int getTotalGames() {
+		return games;
+	}
+	
+	public int getTotalGoals() {
+		return goals;
+	}
+	
+	public void startTournament() {
+		games = 0;
+		goals = 0;
+	}
+	
+	
+}

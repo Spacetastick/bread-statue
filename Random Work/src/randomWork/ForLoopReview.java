@@ -76,7 +76,15 @@ public class ForLoopReview {
         if (values[i] == target) { return i; }
         }
 		 */
-		
+		for (double i : arr2) {
+			if (i == target) {
+				matches = true; //using boolean in place of returning value to make code run
+			}
+			else {
+				matches = false;
+			}
+		}
+		System.out.println("matches is: " + matches);
 	}
 	
 }
