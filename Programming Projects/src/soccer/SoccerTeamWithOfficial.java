@@ -5,7 +5,6 @@ public class SoccerTeamWithOfficial {
 	private int wins, losses, ties;
 	
 	public SoccerTeamWithOfficial(TournamentOfficial x) {
-		
 	}
 	
 	public int getWins() {
@@ -44,7 +43,7 @@ public class SoccerTeamWithOfficial {
 			this.ties += 1;
 			other.ties += 1;
 		}
-		x.goals += (myScore + otherScore);
-		x.games += 1;
+		x.addGoals(myScore, otherScore);
+		x.addGame();  //aaaaaaaa
 	}
 }
