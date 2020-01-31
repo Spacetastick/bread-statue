@@ -21,7 +21,7 @@ public class WorldCup
     System.out.println("Total goals: " + SoccerTeamWithOfficial.getTotalGoals());
     System.out.println();
 
-    SoccerTeamWith.startTournament();
+    //add tournament official accessed from soccer team.startTournament();
     Rockville.reset();
     Gaithersburg.reset();
     Poolesville.reset();

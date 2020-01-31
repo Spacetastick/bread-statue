@@ -20,5 +20,12 @@ public class TournamentOfficial {
 		goals = 0;
 	}
 	
+	public void addGoals(int a, int b) {
+		goals += (a + b);
+	}
+	
+	public void addGame() {
+		games += 1;
+	}
 	
 }
