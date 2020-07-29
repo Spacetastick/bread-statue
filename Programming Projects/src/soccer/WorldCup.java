@@ -4,10 +4,12 @@ public class WorldCup
 {
   public static void main(String[] args)
   {
-    SoccerTeamWithOfficial Rockville = new SoccerTeamWithOfficial();
-    SoccerTeamWithOfficial Gaithersburg = new SoccerTeamWithOfficial();
-    SoccerTeamWithOfficial Poolesville = new SoccerTeamWithOfficial();
-    SoccerTeamWithOfficial Germantown = new SoccerTeamWithOfficial();
+	  TournamentOfficial bruh = new TournamentOfficial();
+	  
+    SoccerTeamWithOfficial Rockville = new SoccerTeamWithOfficial(bruh);
+    SoccerTeamWithOfficial Gaithersburg = new SoccerTeamWithOfficial(bruh);
+    SoccerTeamWithOfficial Poolesville = new SoccerTeamWithOfficial(bruh);
+    SoccerTeamWithOfficial Germantown = new SoccerTeamWithOfficial(bruh);
 
     Rockville.played(Gaithersburg, 1, 2);
     Gaithersburg.played(Poolesville, 2, 2);
@@ -17,8 +19,8 @@ public class WorldCup
     System.out.println("Gaithersburg: " + Gaithersburg.getPoints() + " points");
     System.out.println("Poolesville: " + Poolesville.getPoints() + " points");
     System.out.println("Germantown: " + Germantown.getPoints() + " points");
-    System.out.println("Total games: " + SoccerTeamWithOfficial.getTotalGames());
-    System.out.println("Total goals: " + SoccerTeamWithOfficial.getTotalGoals());
+    System.out.println("Total games: " + bruh.getTotalGames());
+    System.out.println("Total goals: " + bruh.getTotalGoals());
     System.out.println();
 
     //add tournament official accessed from soccer team.startTournament();

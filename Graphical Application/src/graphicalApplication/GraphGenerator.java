@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.geom.*;
 import javax.swing.*;
 
+@SuppressWarnings("serial")
 public class GraphGenerator extends JFrame{
 	
 	public static void drawSpiral(Graphics g) {
@@ -54,7 +55,7 @@ public class GraphGenerator extends JFrame{
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JComponent Graph = new JComponent() {
-			
+
 			public void paintComponent(Graphics graph) {
 		
 				drawSpiral(graph);	

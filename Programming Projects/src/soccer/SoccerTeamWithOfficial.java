@@ -3,8 +3,10 @@ package soccer;
 public class SoccerTeamWithOfficial {
 	
 	private int wins, losses, ties;
+	private TournamentOfficial tOfficial = new TournamentOfficial();
 	
-	public SoccerTeamWithOfficial(TournamentOfficial x) {
+	public SoccerTeamWithOfficial(TournamentOfficial official) {
+		tOfficial = official;
 	}
 	
 	public int getWins() {
@@ -43,7 +45,7 @@ public class SoccerTeamWithOfficial {
 			this.ties += 1;
 			other.ties += 1;
 		}
-		x.addGoals(myScore, otherScore);
-		x.addGame();  //aaaaaaaa
+		tOfficial.addGoals(myScore, otherScore);
+		tOfficial.addGame();
 	}
 }
