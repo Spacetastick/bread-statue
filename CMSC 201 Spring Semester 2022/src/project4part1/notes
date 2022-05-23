@@ -1,0 +1,75 @@
+public void start(Stage primaryStage) is the method that is invoked automatically when a javafx program is run,
+can be overridden. normally places UI controls in a scene and displays the scene in a stage
+
+stage -> scene -> parent (pane, group, control) -> nodes
+stages are the windows, scenes are placed within stages and hold the 
+nodes (things like buttons, shapes, lines, groups, panes, images)
+a scene can contain a control, group, or pane but not a shape or an imageview. a pane or group can contain any node
+
+stage constructor: Stage()
+scene constructor: Scene(parent, width, height) or Scene(Parent) 
+button constructor: Button(string) 
+setTitle (sets title of stage)
+setScene (places scene in the stage)
+show (displays stage)
+
+stage.setResizable(false) (stops user from resizing the stage)
+
+panes are used to lay out nodes in desired location and size. you place nodes inside a pane then place the pane
+into a scene
+pane constructor: StackPane(); or StackPane(node...) to automatically place nodes in pane's list of children
+(stackpane).getChildren().add(new ui element) or addAll(element, element...) .remove(node) or .removeAll()
+stackpanes put all nodes in the center on top of each other
+Pane is default
+HBox is a pane that places nodes horizontally in one row
+FlowPane places nodes row-by-row horizontally or column-by-column vertically: FlowPane(orientation, hgap, vgap)
+GridPane places nodes in the cells in a two-dimensional grid
+BorderPane places nodes in the top, right, bottom, left, and center regions
+VBox places nodes in a single column
+Insets() sets padding in pixels for a pane
+
+shape methods:
+setCenterX(pixels)
+setCenterY(pixels)
+setRadius(pixels) for circle
+setStroke(Color.COLOR) for border color
+setFill(Color.COLOR) for fill color
+
+property binding allows a target object to be bound to a source object, so that if the value in the source object
+changes then the value in the target also changes
+binding x and y of target to the pane it's in: centerXProperty().bind(pane.widthProperty().divide(2));
+                                               centerYProperty().bind(pane.heightProperty().divide(2));
+
+bind method: target.bind(source);
+bind both ways method: bindBidirectional
+binding property for all primitive types and string in form of typeProperty, concrete type is SimpleTypeProperty
+binding property types use add() subtract() multiply() divide() etc and use setValue to alter value
+nodes automatically bound to stackpane's center
+every binding property has a getter setter and property return method
+
+nodes have setStyle(javafx css) setRotate(degrees) contains(double x, double y) to test whether a point (x,y) is inside
+the boundary of a node, setScaleX(double scale) setScaleY(double scale) methods to scale a node
+
+color instance: Color(double r, double g, double b, double opacity)
+font instance: Font(name, size) Font.font(name, weight, posture, size)
+getFontNames() obtains a list of font names
+FontPosture.ITALIC, FontPosture.REGULAR FontWeight.BOLD
+label instance: Label(string) can apply setFont to labels
+
+making images: Image(string that has directory or url);
+ImageView(image) or ImageView(directory or url), a node in order to view the image object
+setFitHeight/Width and setRotate
+
+shape properties: fill, stroke, strokeWidth
+the Text class defines a node that displays a string at a starting point (x,y)
+Text(x,y,text)
+line connects two points with four parameters startX,startY,endX,endY
+Line(startX, startY, endX, endY)
+rectangle upper left corner point is (x,y)
+Rectangle(x,y,width,height)
+Circle(x,y,radius)
+Ellipse(x,y,radiusX,radiusY)
+Polygon(points...)
+
+-------------------------------------
+chapter 15:
