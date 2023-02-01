@@ -1,8 +1,9 @@
-//JUnit_Lab
+//Noah Cil, JUnit Lab for CMSC 204 Spring 23 
 
 package lab2;
 
-import java.util.ArrayList;
+//commmented out because not used
+//import java.util.ArrayList;
 
 public class GradeBook
 {
@@ -81,6 +82,21 @@ public class GradeBook
          return scores[0];
       else
          return sum() - minimum();
+   }
+   
+   //ADDED METHODS
+   public int getScoreSize() {
+	   return scoresSize;
+   }
+   
+   @Override
+   public String toString() {
+	   String output = "";
+	   
+	   for (int i = 0; i < scoresSize; i++)
+		   output += scores[i] + " ";
+	   
+	   return output;
    }
 }
 
