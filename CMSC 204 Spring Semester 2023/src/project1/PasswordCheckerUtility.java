@@ -8,16 +8,17 @@ import java.util.regex.Pattern;
 //how do I return false AND throw an exception?
 //ask about compare password methods
 //fix nosamechar if necessary
-//does java end method execution when throw exception comes
+//isvalidpassword, isweakpassword, and getinvalidpasswords are supposed to be public
 public class PasswordCheckerUtility {
 	
 	/*
 	 * compare equality of two passwords
 	 * throws exception if they are not same
 	 */
-	//Do I just not throw the exception here?
+	//Do I just not throw the exception here? I added it anyways but I am confused
 	public static void comparePasswords(String password, String passwordConfirm) throws UnmatchedException {
-		
+		if (!comparePasswordsWithReturn(password, passwordConfirm))
+			throw new UnmatchedException();
 	}
 	
 	/*
@@ -25,7 +26,9 @@ public class PasswordCheckerUtility {
 	 * return true if both same, false otherwise
 	 */
 	public static boolean comparePasswordsWithReturn(String password, String passwordConfirm) {
-		
+		if (password.equals(passwordConfirm))
+			return true;
+		return false;
 	}
 	
 	/*
