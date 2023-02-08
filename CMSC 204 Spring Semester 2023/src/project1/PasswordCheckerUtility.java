@@ -3,7 +3,17 @@ package project1;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
-
+/**
+ * Password Checker Utility that implements methods which check that a password is valid according
+ * to six criteria:
+ * 1. At least 6 characters long (10 or more characters is a strong password, between 6 and 9 characters is a weak (but acceptable) password.)
+ * 3. At least 1 numeric character
+ * 4. At least 1 uppercase alphabetic character
+ * 5. At least 1 lowercase alphabetic character
+ * 6. At least 1 special character
+ * 7. No more than 2 of the same character in a sequence
+ * @author Noah Cil
+ */
 public class PasswordCheckerUtility {
 
 	public static void comparePasswords(String password, String passwordConfirm) throws UnmatchedException {

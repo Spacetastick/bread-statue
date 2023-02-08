@@ -1,5 +1,9 @@
 package project1;
 
+/**
+ * File that hosts the custom exception classes
+ * @author Noah Cil
+ */
 public class LengthException extends Exception {	
 	public LengthException() {
 		super("The password must be at least 6 characters long");
