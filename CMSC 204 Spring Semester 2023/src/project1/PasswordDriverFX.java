@@ -12,7 +12,6 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 import javax.swing.JFrame;
 
 public class PasswordDriverFX extends Application{

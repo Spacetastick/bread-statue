@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
-
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -35,7 +34,7 @@ public class PasswordMain extends BorderPane
 	private Button checkPwdButton, exitButton, checkPwdsInFileButton;
 	DecimalFormat format = new DecimalFormat("#0.000");
 	private Alert alert = new Alert(AlertType.INFORMATION);
-//	PasswordCheckerUtility pwdChecker; bruh
+	PasswordCheckerUtility pwdChecker;
 	
 	public PasswordMain()
 	{
