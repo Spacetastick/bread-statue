@@ -3,6 +3,12 @@ package project2;
 import java.util.ArrayList;
 
 //probably backwards
+/**
+ * 
+ * @author Noah Cil
+ *
+ * @param <T>
+ */
 public class MyStack<T> implements StackInterface<T> {
 	private int capacity;
 	private final int defaultCapacity = 10; //check if this needs to be a specific size

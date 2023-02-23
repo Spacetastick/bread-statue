@@ -4,6 +4,12 @@ import java.util.ArrayList;
 
 //clean up code this.
 //creating queue from scratch, can use arraylist
+/**
+ * 
+ * @author Noah Cil
+ *
+ * @param <T>
+ */
 public class MyQueue<T> implements QueueInterface<T> {
 	
 	private int capacity;

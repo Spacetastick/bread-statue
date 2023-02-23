@@ -2,6 +2,11 @@ package project2;
 
 //A utility class that converts an infix expression to a postfix expression, a postfix expression to 
 //an infix expression and evaluates a postfix expression.
+/**
+ * 
+ * @author Noah Cil
+ *
+ */
 public class Notation {
 
 
