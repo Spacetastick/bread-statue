@@ -1,7 +1,10 @@
+//this is just useless apparently
+
 /**
  *MgmCompanyGui, Class representing the GUI for company information
  * @author khandan Monshi
  */
+
 
 package project2;
 
