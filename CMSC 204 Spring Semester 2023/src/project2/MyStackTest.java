@@ -1,8 +1,8 @@
 package project2;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -35,7 +35,7 @@ public class MyStackTest {
 	}
 
 	@Test
-	public void testIsEmpty() {
+	public void testIsEmpty() throws StackUnderflowException {
 		assertEquals(false,stringS.isEmpty());
 		stringS.pop();
 		stringS.pop();
@@ -44,7 +44,7 @@ public class MyStackTest {
 	}
 
 	@Test
-	public void testIsFull() {
+	public void testIsFull() throws StackOverflowException {
 		assertEquals(false, stringS.isFull());
 		stringS.push(d);
 		stringS.push(e);
@@ -59,13 +59,13 @@ public class MyStackTest {
 			assertEquals(a, stringS.pop());
 			//Queue is empty, next statement should cause QueueUnderFlowException
 			stringS.pop();
-			assertTrue("This should have caused an StackUnderflowException", false);
+			assertTrue(false, "This should have caused an StackUnderflowException");
 		}
 		catch (StackUnderflowException e){
-			assertTrue("This should have caused an StackUnderflowException", true);
+			assertTrue(true, "This should have caused an StackUnderflowException");
 		}
 		catch (Exception e){
-			assertTrue("This should have caused an StackUnderflowException", false);
+			assertTrue(false, "This should have caused an StackUnderflowException");
 		}
 	}
 
@@ -74,9 +74,9 @@ public class MyStackTest {
 		//Use the doubleQ for student tests
 		fail("Not yet implemented");
 	}
-	
+
 	@Test
-	public void testTop() {
+	public void testTop() throws StackUnderflowException, StackOverflowException {
 		assertEquals(c, stringS.top());
 		stringS.push(d);
 		assertEquals(d, stringS.top());
@@ -86,7 +86,7 @@ public class MyStackTest {
 	}
 
 	@Test
-	public void testSize() {
+	public void testSize() throws StackOverflowException, StackUnderflowException {
 		assertEquals(3, stringS.size());
 		stringS.push(d);
 		assertEquals(4, stringS.size());
@@ -105,13 +105,13 @@ public class MyStackTest {
 			assertEquals(5, stringS.size());
 			//Queue is full, next statement should cause QueueOverFlowException
 			stringS.push(f);
-			assertTrue("This should have caused an StackOverflowException", false);
+			assertTrue(false, "This should have caused an StackOverflowException");
 		}
 		catch (StackOverflowException e){
-			assertTrue("This should have caused an StackOverflowException", true);
+			assertTrue(true, "This should have caused an StackOverflowException");
 		}
 		catch (Exception e){
-			assertTrue("This should have caused an StackOverflowException", false);
+			assertTrue(false, "This should have caused an StackOverflowException");
 		}
 	}
 
@@ -122,7 +122,7 @@ public class MyStackTest {
 	}
 	
 	@Test
-	public void testToString() {
+	public void testToString() throws StackOverflowException {
 		assertEquals("abc", stringS.toString());
 		stringS.push(d);
 		assertEquals("abcd", stringS.toString());
@@ -137,7 +137,7 @@ public class MyStackTest {
 	}
 	
 	@Test
-	public void testToStringDelimiter() {
+	public void testToStringDelimiter() throws StackOverflowException {
 		assertEquals("a%b%c", stringS.toString("%"));
 		stringS.push(d);
 		assertEquals("a&b&c&d", stringS.toString("&"));
@@ -146,7 +146,7 @@ public class MyStackTest {
 	}
 
 	@Test
-	public void testFill() {
+	public void testFill() throws StackOverflowException, StackUnderflowException {
 		fill.add("apple");
 		fill.add("banana");
 		fill.add("carrot");

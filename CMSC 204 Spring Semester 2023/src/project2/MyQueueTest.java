@@ -1,13 +1,15 @@
 package project2;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+//import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertTrue;
+//import static org.junit.Assert.fail;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class MyQueueTest {
 	public MyQueue<String> stringQ;
@@ -35,7 +37,7 @@ public class MyQueueTest {
 	}
 
 	@Test
-	public void testIsEmpty() {
+	public void testIsEmpty() throws QueueUnderflowException {
 		assertEquals(false,stringQ.isEmpty());
 		stringQ.dequeue();
 		stringQ.dequeue();
@@ -51,13 +53,13 @@ public class MyQueueTest {
 			assertEquals(c, stringQ.dequeue());
 			//Queue is empty, next statement should cause QueueUnderFlowException
 			stringQ.dequeue();
-			assertTrue("This should have caused an QueueUnderflowException", false);
+			assertTrue(false, "This should have caused an QueueUnderflowException");
 		}
 		catch (QueueUnderflowException e){
-			assertTrue("This should have caused an QueueUnderflowException", true);
+			assertTrue(true, "This should have caused an QueueUnderflowException");
 		}
 		catch (Exception e){
-			assertTrue("This should have caused an QueueUnderflowException", false);
+			assertTrue(false, "This should have caused an QueueUnderflowException");
 		}
 	}
 	
@@ -68,7 +70,7 @@ public class MyQueueTest {
 	}
 
 	@Test
-	public void testSize() {
+	public void testSize() throws QueueOverflowException, QueueUnderflowException {
 		assertEquals(3, stringQ.size());
 		stringQ.enqueue(d);
 		assertEquals(4, stringQ.size());
@@ -87,13 +89,13 @@ public class MyQueueTest {
 			assertEquals(5, stringQ.size());
 			//Queue is full, next statement should cause QueueOverFlowException
 			stringQ.enqueue(f);
-			assertTrue("This should have caused an QueueOverflowException", false);
+			assertTrue(false, "This should have caused an QueueOverflowException");
 		}
 		catch (QueueOverflowException e){
-			assertTrue("This should have caused an QueueOverflowException", true);
+			assertTrue(true, "This should have caused an QueueOverflowException");
 		}
 		catch (Exception e){
-			assertTrue("This should have caused an QueueOverflowException", false);
+			assertTrue(false, "This should have caused an QueueOverflowException");
 		}
 	}
 
@@ -104,7 +106,7 @@ public class MyQueueTest {
 	}
 
 	@Test
-	public void testIsFull() {
+	public void testIsFull() throws QueueOverflowException {
 		assertEquals(false, stringQ.isFull());
 		stringQ.enqueue(d);
 		stringQ.enqueue(e);
@@ -112,7 +114,7 @@ public class MyQueueTest {
 	}
 
 	@Test
-	public void testToString() {
+	public void testToString() throws QueueOverflowException {
 		assertEquals("abc", stringQ.toString());
 		stringQ.enqueue(d);
 		assertEquals("abcd", stringQ.toString());
@@ -127,7 +129,7 @@ public class MyQueueTest {
 	}
 
 	@Test
-	public void testToStringDelimiter() {
+	public void testToStringDelimiter() throws QueueOverflowException {
 		assertEquals("a%b%c", stringQ.toString("%"));
 		stringQ.enqueue(d);
 		assertEquals("a&b&c&d", stringQ.toString("&"));
@@ -136,7 +138,7 @@ public class MyQueueTest {
 	}
 
 	@Test
-	public void testFill() {
+	public void testFill() throws QueueOverflowException, QueueUnderflowException {
 		fill.add("apple");
 		fill.add("banana");
 		fill.add("carrot");

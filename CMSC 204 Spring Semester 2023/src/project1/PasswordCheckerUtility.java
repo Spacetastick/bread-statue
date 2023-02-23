@@ -28,13 +28,13 @@ public class PasswordCheckerUtility {
 		return false;
 	}
 
-	public static boolean isValidLength(String password) throws LengthException {
+	private static boolean isValidLength(String password) throws LengthException {
 		if (password.length() < 6)
 			throw new LengthException();
 		return true;
 	}
 
-	public static boolean hasUpperAlpha(String password) throws NoUpperAlphaException {
+	private static boolean hasUpperAlpha(String password) throws NoUpperAlphaException {
 		Pattern pattern = Pattern.compile(".*[A-Z].*");
 		
 		if (!pattern.matcher(password).matches())

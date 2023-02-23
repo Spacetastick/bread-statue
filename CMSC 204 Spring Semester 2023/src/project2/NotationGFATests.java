@@ -1,7 +1,8 @@
 package project2;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,7 +25,7 @@ class NotationGFATests {
 
 	 
 	@Test
-	public void testIsEmptyQueue() {
+	public void testIsEmptyQueue() throws QueueUnderflowException {
 		assertEquals(false,stringQ.isEmpty());
 		stringQ.dequeue();
 		assertEquals(true, stringQ.isEmpty());
@@ -36,25 +37,25 @@ class NotationGFATests {
 			 
 			//Queue is empty, next statement should cause QueueUnderFlowException
 			stringQ.dequeue();
-			assertTrue("This should have caused an QueueUnderflowException", false);
+			assertTrue(false, "This should have caused an QueueUnderflowException");
 		}
 		catch (QueueUnderflowException e){
-			assertTrue("This should have caused an QueueUnderflowException", true);
+			assertTrue(true, "This should have caused an QueueUnderflowException");
 		}
 		catch (Exception e){
-			assertTrue("This should have caused an QueueUnderflowException", false);
+			assertTrue(false, "This should have caused an QueueUnderflowException");
 		}
 	}
 	
 	@Test
-	public void testIsEmptyStack() {
+	public void testIsEmptyStack() throws StackUnderflowException {
 		assertEquals(false,stringS.isEmpty());
 		stringS.pop();
 		assertEquals(true, stringS.isEmpty());
 	}
 
 	@Test
-	public void testIsFull() {
+	public void testIsFull() throws StackOverflowException {
 		assertEquals(false, stringS.isFull());
 		stringS.push("b");
 		assertEquals(true, stringS.isFull());
