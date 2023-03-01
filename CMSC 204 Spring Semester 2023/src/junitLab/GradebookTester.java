@@ -1,6 +1,6 @@
 //Noah Cil, JUnit Lab for CMSC 204 Spring 23 
 
-package lab2;
+package junitLab;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.AfterEach;

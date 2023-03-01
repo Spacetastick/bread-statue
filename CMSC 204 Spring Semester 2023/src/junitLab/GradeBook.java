@@ -1,6 +1,6 @@
 //Noah Cil, JUnit Lab for CMSC 204 Spring 23 
 
-package lab2;
+package junitLab;
 
 //commmented out because not used
 //import java.util.ArrayList;
