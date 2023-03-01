@@ -1,3 +1,5 @@
+package genericLab;
+
 /**
    This program tests the DataSetGen class.
 */

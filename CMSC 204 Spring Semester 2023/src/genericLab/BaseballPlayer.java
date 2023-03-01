@@ -1,3 +1,5 @@
+package genericLab;
+
 /**
    A baseball player
 */

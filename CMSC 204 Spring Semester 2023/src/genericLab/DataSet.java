@@ -1,3 +1,5 @@
+package genericLab;
+
 /**
    Computes the average of a set of data values.
 */

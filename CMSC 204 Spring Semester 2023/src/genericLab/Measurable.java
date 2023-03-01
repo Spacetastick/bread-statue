@@ -1,3 +1,5 @@
+package genericLab;
+
 /**
    Describes any class whose objects can be measured.
 */
