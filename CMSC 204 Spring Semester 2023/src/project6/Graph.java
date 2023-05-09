@@ -1,5 +1,9 @@
 package project6;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Set;
+
 /*
  * Create a Graph class that implements the GraphInterface given to you. For Graph<V,E>, V is the vertex type (a Town), E is the edge type (a Road).
  * You will need to decide how to store the graph: use an adjacent matrix or an adjacency list.
@@ -16,5 +20,63 @@ public class Graph implements GraphInterface<Town, Road> {
 	 * uses a weighted graph which means that the edges have a weight, and this is used to determine the shortest path. For this implementation, each weight wwill
 	 * be the distance of the road in miles.
 	 */
+	
+	private ArrayList<Town> towns; //may not need this
+	private HashMap<Town, ArrayList<Road>> adjList;
+	
+	public Graph() {
+		towns = new ArrayList<>(); //may not need this
+		adjList = new HashMap<>();
+	}
+	
+	public Road getEdge(Town source, Town destination) {
+		
+	}
+	
+	public Road addEdge(Town source, Town destination, int weight, String roadName) {
+		
+	}
+	
+	public boolean addVertex(Town town) {
+		
+	}
+	
+	public boolean containsEdge(Town source, Town destination) {
+		
+	}
+	
+	public boolean containsVertex(Town town) {
+		
+	}
+	
+	//may be a hash set, which I might want to import instead, although I don't know if the implementation will still work if I change to hash set
+	public Set<Road> edgeSet() {
+		
+	}
+	
+	public Set<Road> edgesOf(Town town) {
+		
+	}
+	
+	public Road removeEdge(Town source, Town destination, int weight, String roadName) {
+		
+	}
+	
+	public boolean removeVertex(Town town) {
+		
+	}
+	
+	public Set<Town> vertexSet() {
+		
+	}
+	
+	public ArrayList<String> shortestPath(Town source, Town destination) {
+		
+	}
+	
+	//should this be public?
+	public void dijkstraShortestPath(Town source) {
+		
+	}
 	
 }
