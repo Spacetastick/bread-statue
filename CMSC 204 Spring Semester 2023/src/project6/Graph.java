@@ -30,10 +30,24 @@ public class Graph implements GraphInterface<Town, Road> {
 	}
 	
 	public Road getEdge(Town source, Town destination) {
+		//check if both vertices exist in graph
+		if (!this.adjList.containsKey(source) || !this.adjList.containsKey(destination))
+			return null;
 		
+		//check if they share a road
+		ArrayList<Road> sourceRoads = this.adjList.get(source);
+		ArrayList<Road> destinationRoads = this.adjList.get(destination);
+		if (sourceRoads == null || destinationRoads == null)
+			return null;
+		
+		for (Road road : sourceRoads) {
+			if (destinationRoads.contains(road))
+				return road;
+		}
+		return null;
 	}
 	
-	public Road addEdge(Town source, Town destination, int weight, String roadName) {
+	public Road addEdge(Town source, Town destination, int weight, String roadName) throws IllegalArgumentException {
 		
 	}
 	
