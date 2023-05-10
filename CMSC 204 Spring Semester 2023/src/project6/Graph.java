@@ -70,8 +70,18 @@ public class Graph implements GraphInterface<Town, Road> {
 		return edge;
 	}
 	
-	public boolean addVertex(Town town) {
+	public boolean addVertex(Town town) throws NullPointerException {
+		//checks if input is null
+		if (town == null)
+			throw new NullPointerException();
 		
+		//checks if input is already in graph
+		if (this.adjList.containsKey(town))
+			return false;
+		
+		//adds input to graph
+		this.adjList.put(town, null); //this might create problems, idk
+		return true;
 	}
 	
 	public boolean containsEdge(Town source, Town destination) {
