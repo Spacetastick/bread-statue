@@ -110,8 +110,20 @@ public class Graph implements GraphInterface<Town, Road> {
 		return this.roadSet;
 	}
 	
-	public HashSet<Road> edgesOf(Town town) {
+	//the instructions for this method do not say the set must be backed by the graph, so I will not implement it that way.
+	//putting this comment here in case the instructions are wrong and this causes problems
+	public HashSet<Road> edgesOf(Town town) throws IllegalArgumentException, NullPointerException {
+		//checking if input is null
+		if (town == null)
+			throw new NullPointerException();
 		
+		//checking if input exists in graph
+		if (!this.adjList.containsKey(town))
+			throw new IllegalArgumentException();
+		
+		//creating new hashset using the hashset constructor that accepts a collection type (namely the arraylist used for storing roads connceted
+		//to the input vertex) and returning it
+		return new HashSet<Road>(this.adjList.get(town));
 	}
 	
 	public Road removeEdge(Town source, Town destination, int weight, String roadName) {
