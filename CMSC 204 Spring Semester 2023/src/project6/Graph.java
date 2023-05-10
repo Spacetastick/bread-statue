@@ -2,7 +2,7 @@ package project6;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Set;
+import java.util.HashSet;
 
 /*
  * Create a Graph class that implements the GraphInterface given to you. For Graph<V,E>, V is the vertex type (a Town), E is the edge type (a Road).
@@ -21,11 +21,13 @@ public class Graph implements GraphInterface<Town, Road> {
 	 * be the distance of the road in miles.
 	 */
 	
-	private ArrayList<Town> towns; //may not need this
+	private HashSet<Town> townSet;
+	private HashSet<Road> roadSet;
 	private HashMap<Town, ArrayList<Road>> adjList;
 	
 	public Graph() {
-		towns = new ArrayList<>(); //may not need this
+		townSet = new HashSet<>();
+		roadSet = new HashSet<>();
 		adjList = new HashMap<>();
 	}
 	
@@ -67,6 +69,9 @@ public class Graph implements GraphInterface<Town, Road> {
 		this.adjList.computeIfAbsent(source, key -> new ArrayList<Road>()).add(edge);
 		this.adjList.computeIfAbsent(destination, key -> new ArrayList<Road>()).add(edge);
 		
+		//adding edge to roadSet for the live view requirement
+		this.roadSet.add(edge);
+		
 		return edge;
 	}
 	
@@ -81,6 +86,10 @@ public class Graph implements GraphInterface<Town, Road> {
 		
 		//adds input to graph
 		this.adjList.put(town, null); //this might create problems, idk
+		
+		//adds input to townSet for live view requirement
+		this.townSet.add(town);
+		
 		return true;
 	}
 	
@@ -97,12 +106,11 @@ public class Graph implements GraphInterface<Town, Road> {
 		return this.adjList.containsKey(town);
 	}
 	
-	//may be a hash set, which I might want to import instead, although I don't know if the implementation will still work if I change to hash set
-	public Set<Road> edgeSet() {
-		
+	public HashSet<Road> edgeSet() {
+		return this.roadSet;
 	}
 	
-	public Set<Road> edgesOf(Town town) {
+	public HashSet<Road> edgesOf(Town town) {
 		
 	}
 	
@@ -114,8 +122,8 @@ public class Graph implements GraphInterface<Town, Road> {
 		
 	}
 	
-	public Set<Town> vertexSet() {
-		
+	public HashSet<Town> vertexSet() {
+		return this.townSet;
 	}
 	
 	public ArrayList<String> shortestPath(Town source, Town destination) {
