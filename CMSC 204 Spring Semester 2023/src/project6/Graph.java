@@ -47,8 +47,27 @@ public class Graph implements GraphInterface<Town, Road> {
 		return null;
 	}
 	
-	public Road addEdge(Town source, Town destination, int weight, String roadName) throws IllegalArgumentException {
+	public Road addEdge(Town source, Town destination, int weight, String roadName) throws IllegalArgumentException, NullPointerException {
+		//the javadoc entry for this method implies that there are one or more sets of circumstances where it would return null,
+		//but since any type of edge connection is acceptable in this graph implementation I don't see how that would ever happen 🤷‍♂️
 		
+		//checking if vertices are null
+		if (source == null || destination == null)
+			throw new NullPointerException();
+		
+		//checking if both vertices exist in graph
+		if (!this.adjList.containsKey(source) || !this.adjList.containsKey(destination))
+			throw new IllegalArgumentException();
+		
+		//making new edge and adding it to the lists of both keys
+		Road edge = new Road(source, destination, weight, roadName);
+		
+		//either adds the new edge to an already existing value (arraylist) for both vertices, or creates
+		//a new arraylist and adds the edge to it.
+		this.adjList.computeIfAbsent(source, key -> new ArrayList<Road>()).add(edge);
+		this.adjList.computeIfAbsent(destination, key -> new ArrayList<Road>()).add(edge);
+		
+		return edge;
 	}
 	
 	public boolean addVertex(Town town) {
