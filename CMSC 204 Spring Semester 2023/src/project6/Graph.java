@@ -85,7 +85,11 @@ public class Graph implements GraphInterface<Town, Road> {
 	}
 	
 	public boolean containsEdge(Town source, Town destination) {
-		
+		//basically the same thing as the getEdge method, but boolean instead of road
+		Road temp = this.getEdge(source, destination);
+		if (temp == null)
+			return false;
+		return true;
 	}
 	
 	public boolean containsVertex(Town town) {
