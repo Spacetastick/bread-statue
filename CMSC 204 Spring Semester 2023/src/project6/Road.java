@@ -92,6 +92,8 @@ public class Road implements Comparable<Road> {
 		return this.name.compareTo(o.name);
 	}
 	
+	//seems like the fact that this doesn't consider the name or weights of the roads is an oversight in the instructions.
+	//unless I am misundertsanding, parallel edges are not equivalent if they have different names and weights.
 	@Override
 	public boolean equals(Object r) {
 		//returns true if each of the ends of the road r is the same as the ends of this road. 

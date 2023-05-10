@@ -127,7 +127,34 @@ public class Graph implements GraphInterface<Town, Road> {
 	}
 	
 	public Road removeEdge(Town source, Town destination, int weight, String roadName) {
+		//checking if weight is valid (>= 1)
+		if (weight < 1)
+			return null;
 		
+		//checking if roadName is valid (not null)
+		if (roadName == null)
+			return null;
+		
+		//check if both vertices exist in graph
+		if (!this.adjList.containsKey(source) || !this.adjList.containsKey(destination))
+			return null;
+		
+		//check if the provided edge connects the provided vertices
+		ArrayList<Road> sourceRoads = this.adjList.get(source);
+		ArrayList<Road> destinationRoads = this.adjList.get(destination);
+		if (sourceRoads == null || destinationRoads == null)
+			return null;
+		
+		for (Road road : sourceRoads) {
+			if (road.getName().equals(roadName) && road.getWeight() == weight) {
+				if (destinationRoads.contains(road)) {
+					sourceRoads.remove(road);
+					destinationRoads.remove(road);
+					return road;
+				}
+			}
+		}
+		return null;
 	}
 	
 	public boolean removeVertex(Town town) {
