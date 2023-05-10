@@ -150,6 +150,10 @@ public class Graph implements GraphInterface<Town, Road> {
 				if (destinationRoads.contains(road)) {
 					sourceRoads.remove(road);
 					destinationRoads.remove(road);
+					
+					//removing from roadSet for live view requirement
+					this.roadSet.remove(road);
+					
 					return road;
 				}
 			}
@@ -157,8 +161,30 @@ public class Graph implements GraphInterface<Town, Road> {
 		return null;
 	}
 	
+	//these methods may not be implemented correctly because the input object is not necessarily the same as what is contained in the graph I think
+	//if the add and remove methods and others that have the formal u.equals(v) definition don't work, this is why
 	public boolean removeVertex(Town town) {
+		//check if graph contains input vertex
+		if (!this.adjList.containsKey(town))
+			return false;
 		
+		//removing all edges connected to vertex
+		ArrayList<Road> townRoads = this.adjList.get(town);
+		//following if may not be necessary
+		if (townRoads != null) {
+			for (Road road : townRoads) {
+				//check road info to see if town is source or destination and handle accordingly
+				if (road.getSource().equals(town))
+					this.removeEdge(town, road.getDestination(), road.getWeight(), road.getName());
+				else
+					this.removeEdge(road.getSource(), town, road.getWeight(), road.getName());
+			}
+		}
+		
+		//removing vertex
+		this.adjList.remove(town);
+		
+		return true;
 	}
 	
 	public HashSet<Town> vertexSet() {
