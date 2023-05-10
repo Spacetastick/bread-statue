@@ -93,7 +93,8 @@ public class Graph implements GraphInterface<Town, Road> {
 	}
 	
 	public boolean containsVertex(Town town) {
-		
+		//this is just the containsKey method since I am using a map implementation
+		return this.adjList.containsKey(town);
 	}
 	
 	//may be a hash set, which I might want to import instead, although I don't know if the implementation will still work if I change to hash set
