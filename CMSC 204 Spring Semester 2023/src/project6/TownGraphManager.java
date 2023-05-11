@@ -92,8 +92,10 @@ public class TownGraphManager implements TownGraphManagerInterface {
 		return towns;
 	}
 	
+	//the documentation for this says "null if the towns have no path to connect them", but the previous
+	//implementation of shortestPath did not have this concern so it's probably fine
 	@Override
 	public ArrayList<String> getPath(String town1, String town2) {
-		
+        return graph.shortestPath(new Town(town1), new Town(town2));
 	}
 }
