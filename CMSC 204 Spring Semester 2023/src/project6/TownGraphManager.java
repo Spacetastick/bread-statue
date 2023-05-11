@@ -12,46 +12,63 @@ public class TownGraphManager implements TownGraphManagerInterface {
 
 	//ACCOUNT FOR THE POSSIBILITY OF A DISJOINTED GRAPH (see notes)
 	
+	private Graph graph;
+	
+	public TownGraphManager() {
+		this.graph = new Graph();
+	}
+	
+	@Override
 	public boolean addRoad(String town1, String town2, int weight, String roadName) {
 		
 	}
 	
+	@Override
 	public String getRoad(String town1, String town2) {
 		
 	}
 	
+	@Override
 	public boolean addTown(String v) {
 		
 	}
 	
+	@Override
 	public Town getTown(String name) {
 		
 	}
 	
+	@Override
 	public boolean containsTown(String v) {
 		
 	}
 	
+	@Override
 	public boolean containsRoadConnection(String town1, String town2) {
 		
 	}
 	
+	@Override
 	public ArrayList<String> allRoads() {
 		
 	}
 	
+	@Override
 	public boolean deleteRoadConnection(String town1, String town2, String road) {
 		
 	}
 	
+	@Override
 	public boolean deleteTown(String v) {
 		
 	}
 	
+	@Override
 	public ArrayList<String> allTowns() {
 		
 	}
 	
+	@Override
 	public ArrayList<String> getPath(String town1, String town2) {
 		
 	}
