@@ -12,18 +12,15 @@ import java.util.ArrayList;
 public class Town implements Comparable<Town> {
 
 	private String name;
-	//may need to be updated to a different list type
 	private ArrayList<Town> adjacentTowns = new ArrayList<>();
 	
 	public Town(String name) {
 		//constructor
-		//I'm not sure if this will work given that the variable is private, same for the other constructor. Come back if issue
 		this.name = name;
 	}
 	
 	public Town(Town templateTown) {
 		//copy constructor
-		//I assume this is the correct implementation, but I may need to come back to this
 		this.name = templateTown.name;
 		//might need or want to copy the adjacentTowns list as well
 	}
@@ -47,8 +44,7 @@ public class Town implements Comparable<Town> {
 	
 	//not provided in javadoc
 	public void setAdjacentTowns(ArrayList<Town> list) {
-		//sets the town's adjacencies
-		//this is probably not the correct way to implement this 🤷‍
+		//sets the town's adjacencies‍
 		this.adjacentTowns = list;
 	}
 	

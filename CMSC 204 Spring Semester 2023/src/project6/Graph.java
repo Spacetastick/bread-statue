@@ -10,17 +10,6 @@ import java.util.HashSet;
  * You will need to decide how to store the graph: use an adjacent matrix or an adjacency list.
  */
 public class Graph implements GraphInterface<Town, Road> {
-
-	/*
-	 * Within the Graph interface is a method shortestPath, which finds the shortest path from a given source Town toa destination Town.
-	 * Since there is a unique shorterst path from every vertex to the source, there is a back-pointer to the previous vertex. The method
-	 * shortestPath calls dijkstraShortestPath which finds the shortest path form the source to every other vertex in the graph.
-	 * You will be coding the Dijkstra's Shortest Path algorithm. You will then be able to find the connections between two towns through the roads that connect them.
-	 * 
-	 * You may use the adjacency matrix approach found in the text book, or you may use a set of Towns and a set of Roads. The ShortestPath algorithm typiclaly
-	 * uses a weighted graph which means that the edges have a weight, and this is used to determine the shortest path. For this implementation, each weight wwill
-	 * be the distance of the road in miles.
-	 */
 	
 	private HashSet<Town> townSet;
 	private HashSet<Road> roadSet;
@@ -88,7 +77,7 @@ public class Graph implements GraphInterface<Town, Road> {
 			return false;
 		
 		//adds input to graph
-		this.adjList.put(town, null); //this might create problems, idk
+		this.adjList.put(town, null);
 		
 		//adds input to townSet for live view requirement
 		this.townSet.add(town);
@@ -111,8 +100,6 @@ public class Graph implements GraphInterface<Town, Road> {
 		return this.roadSet;
 	}
 	
-	//the instructions for this method do not say the set must be backed by the graph, so I will not implement it that way.
-	//putting this comment here in case the instructions are wrong and this causes problems
 	public HashSet<Road> edgesOf(Town town) throws IllegalArgumentException, NullPointerException {
 		//checking if input is null
 		if (town == null)
@@ -146,19 +133,26 @@ public class Graph implements GraphInterface<Town, Road> {
 		if (sourceRoads == null || destinationRoads == null)
 			return null;
 		
+		Road target = null; //to avoid concurrent modification exception
 		for (Road road : sourceRoads) {
 			if (road.getName().equals(roadName) && road.getWeight() == weight) {
 				if (destinationRoads.contains(road)) {
-					sourceRoads.remove(road);
-					destinationRoads.remove(road);
-					
-					//removing from roadSet for live view requirement
-					this.roadSet.remove(road);
-					
-					return road;
+					target = road;
 				}
 			}
 		}
+		
+		//to avoid concurrent modification exception
+		if (target != null) {
+			sourceRoads.remove(target);
+			destinationRoads.remove(target);
+			
+			//removing from roadSet for live view requirement
+			this.roadSet.remove(target);
+			
+			return target;
+		}
+		
 		return null;
 	}
 	
@@ -178,31 +172,36 @@ public class Graph implements GraphInterface<Town, Road> {
 		if (sourceRoads == null || destinationRoads == null)
 			return null;
 		
+		Road target = null; //to avoid concurrent modification exception
 		for (Road road : sourceRoads) {
 			if (road.getName().equals(roadName)) {
 				if (destinationRoads.contains(road)) {
-					sourceRoads.remove(road);
-					destinationRoads.remove(road);
-					
-					//removing from roadSet for live view requirement
-					this.roadSet.remove(road);
-					
-					return road;
+					target = road;
 				}
 			}
 		}
+		
+		//to avoid concurrent modification exception
+		if (target != null) {
+			sourceRoads.remove(target);
+			destinationRoads.remove(target);
+			
+			//removing from roadSet for live view requirement
+			this.roadSet.remove(target);
+			
+			return target;
+		}
+		
 		return null;
 	}
 	
-	//these methods may not be implemented correctly because the input object is not necessarily the same as what is contained in the graph I think
-	//if the add and remove methods and others that have the formal u.equals(v) definition don't work, this is why
 	public boolean removeVertex(Town town) {
 		//check if graph contains input vertex
 		if (!this.adjList.containsKey(town))
 			return false;
 		
 		//removing all edges connected to vertex
-		ArrayList<Road> townRoads = this.adjList.get(town);
+		ArrayList<Road> townRoads = new ArrayList<>(this.adjList.get(town)); //to avoid concurrent modification
 		//following if may not be necessary
 		if (townRoads != null) {
 			for (Road road : townRoads) {
@@ -239,13 +238,7 @@ public class Graph implements GraphInterface<Town, Road> {
 		if (this.shortestPathData.size() == 0)
 			return path;
 		
-		/*
-		 * Vertex_1 via Edge_2 to Vertex_3 4 (first string in ArrayList)
-		 * Vertex_3 via Edge_5 to Vertex_8 2 (second string in ArrayList)
-		 * Vertex_8 via Edge_9 to Vertex_10 2 (third string in ArrayList)
-		 */
-		
-		//adds strings to path in the above format backwards, going from the destination to the source
+		//adds strings to path in the provided format backwards, going from the destination to the source
 		Town currentVertex = destination;
 		while (currentVertex != source) {
 			Object[] currentData = this.shortestPathData.get(currentVertex);
@@ -259,7 +252,6 @@ public class Graph implements GraphInterface<Town, Road> {
 		return path;
 	}
 	
-	//should this be public?
 	public void dijkstraShortestPath(Town source) {
 		//shortestPathData will be used to hold the three values needed per row of the data table for dijkstra.
 		//The current vertex will be held as the key value. The int value for total road weight from the source will be held in index 0
@@ -267,7 +259,7 @@ public class Graph implements GraphInterface<Town, Road> {
 		//the current and previous will be held in index 2.
 		//basic overview of value storage for a key: {shortest distance from original source to key, previous vertex from key, road between key and previous vertex}
 		
-		//assumes that source does indeed exist in the graph, I guess I will take care of this in shortestPath
+		//assumes that source does indeed exist in the graph
 		ArrayList<Town> visited = new ArrayList<>();
 		ArrayList<Town> unvisited = new ArrayList<>(this.adjList.keySet());
 		
