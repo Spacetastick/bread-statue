@@ -211,7 +211,8 @@ public class Graph implements GraphInterface<Town, Road> {
 		Town currentVertex = destination;
 		while (currentVertex != source) {
 			Object[] currentData = this.shortestPathData.get(currentVertex);
-			path.add(currentData[1] + " via " + currentData[2] + " to " + currentVertex + " " + ((Road)currentData[2]).getWeight());
+			path.add(currentData[1] + " via " + currentData[2] + " to " + currentVertex + " " + ((Road)currentData[2]).getWeight() + " mi");
+			currentVertex = (Town)currentData[1]; //potential fix
 		}
 		
 		//reverses the order of path so strings are in correct order
