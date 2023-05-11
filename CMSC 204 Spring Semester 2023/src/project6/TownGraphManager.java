@@ -8,11 +8,51 @@ package project6;
  * vertices can be reached from all other vertices). You may add any methods as needed for your design
  */
 
-/*
- * FileNotFoundException - created and thrown when the selected input file is not found.
- * IOException - created and thrown when user selects an input file that cannot be read (check out the methods of File).
- * These exceptions exist in the Java API
- */
-public class TownGraphManager {
+public class TownGraphManager implements TownGraphManagerInterface {
 
+	//ACCOUNT FOR THE POSSIBILITY OF A DISJOINTED GRAPH (see notes)
+	
+	public boolean addRoad(String town1, String town2, int weight, String roadName) {
+		
+	}
+	
+	public String getRoad(String town1, String town2) {
+		
+	}
+	
+	public boolean addTown(String v) {
+		
+	}
+	
+	public Town getTown(String name) {
+		
+	}
+	
+	public boolean containsTown(String v) {
+		
+	}
+	
+	public boolean containsRoadConnection(String town1, String town2) {
+		
+	}
+	
+	public ArrayList<String> allRoads() {
+		
+	}
+	
+	public boolean deleteRoadConnection(String town1, String town2, String road) {
+		
+	}
+	
+	public boolean deleteTown(String v) {
+		
+	}
+	
+	public ArrayList<String> allTowns() {
+		
+	}
+	
+	public ArrayList<String> getPath(String town1, String town2) {
+		
+	}
 }
