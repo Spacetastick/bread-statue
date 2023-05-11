@@ -217,6 +217,9 @@ public class Graph implements GraphInterface<Town, Road> {
 		//removing vertex
 		this.adjList.remove(town);
 		
+		//removing from townSet for live view requirement
+		this.townSet.remove(town);
+		
 		return true;
 	}
 	

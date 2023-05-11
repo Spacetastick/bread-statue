@@ -96,4 +96,5 @@ public class TownGraphManager implements TownGraphManagerInterface {
 	public ArrayList<String> getPath(String town1, String town2) {
         return graph.shortestPath(new Town(town1), new Town(town2));
 	}
+	
 }
