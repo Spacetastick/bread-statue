@@ -82,7 +82,14 @@ public class TownGraphManager implements TownGraphManagerInterface {
 	
 	@Override
 	public ArrayList<String> allTowns() {
+		ArrayList<String> towns = new ArrayList<>();
 		
+		for (Town town : graph.vertexSet())
+			towns.add(town.getName());
+		
+		Collections.sort(towns);
+		
+		return towns;
 	}
 	
 	@Override
