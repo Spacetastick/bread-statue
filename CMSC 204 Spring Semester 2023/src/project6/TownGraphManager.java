@@ -32,7 +32,7 @@ public class TownGraphManager implements TownGraphManagerInterface {
 	
 	@Override
 	public boolean addTown(String v) {
-		
+		return graph.addVertex(new Town(v));
 	}
 	
 	@Override
