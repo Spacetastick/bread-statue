@@ -55,7 +55,7 @@ public class TownGraphManager implements TownGraphManagerInterface {
 	
 	@Override
 	public boolean containsRoadConnection(String town1, String town2) {
-		
+        return graph.containsEdge(new Town(town1), new Town(town2));
 	}
 	
 	@Override
