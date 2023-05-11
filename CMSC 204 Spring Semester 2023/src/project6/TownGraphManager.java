@@ -37,7 +37,12 @@ public class TownGraphManager implements TownGraphManagerInterface {
 	
 	@Override
 	public Town getTown(String name) {
-		
+        for (Town town : graph.vertexSet()) {
+            if (town.getName().equals(name)) {
+                return town;
+            }
+        }
+        return null;
 	}
 	
 	@Override
