@@ -231,6 +231,11 @@ public class Graph implements GraphInterface<Town, Road> {
 		//populates shortestPathData with data for the current state of the graph
 		this.dijkstraShortestPath(source);
 		
+		//edit to account for disjointed graph; if currentNeighbors is null it will have cleared shortestPathData
+		//and ended the execution of the method, so we check to see if size of said hashmap is zero
+		if (this.shortestPathData.size() == 0)
+			return path;
+		
 		/*
 		 * Vertex_1 via Edge_2 to Vertex_3 4 (first string in ArrayList)
 		 * Vertex_3 via Edge_5 to Vertex_8 2 (second string in ArrayList)
@@ -283,6 +288,14 @@ public class Graph implements GraphInterface<Town, Road> {
 			
 			//getting access to all neighbors of current vertex by accessing all connected edges
 			ArrayList<Road> currentNeighbors = this.adjList.get(currentVertex);
+			
+			//edit to account for disjointed graph; the path cannot continue and should return empty arraylist
+			//if currentNeighbors is null
+			if (currentNeighbors == null) {
+				this.shortestPathData.clear();
+				return;
+			}
+			
 			//looping like this to check all neighboring towns of current vertex
 			for (Road road : currentNeighbors) {
 				

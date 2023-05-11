@@ -12,8 +12,6 @@ import java.util.Collections;
  */
 
 public class TownGraphManager implements TownGraphManagerInterface {
-
-	//ACCOUNT FOR THE POSSIBILITY OF A DISJOINTED GRAPH (see notes)
 	
 	private Graph graph;
 	
