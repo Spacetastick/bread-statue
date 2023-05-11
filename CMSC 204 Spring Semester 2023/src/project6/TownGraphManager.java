@@ -47,7 +47,7 @@ public class TownGraphManager implements TownGraphManagerInterface {
 	
 	@Override
 	public boolean containsTown(String v) {
-		
+		return this.getTown(v) != null ? true : false;
 	}
 	
 	@Override
