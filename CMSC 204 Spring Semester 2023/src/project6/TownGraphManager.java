@@ -1,5 +1,8 @@
 package project6;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 /*
  * Your TownGraphManager will hold an object of your Graph. There are methods to populate the graph (reading from a text file), add a town (vertices),
  * add a road (edge), list all towns and all roads, and list towns adjacent to a given town. 
@@ -57,7 +60,14 @@ public class TownGraphManager implements TownGraphManagerInterface {
 	
 	@Override
 	public ArrayList<String> allRoads() {
+		ArrayList<String> roads = new ArrayList<>();
 		
+		for (Road road : graph.edgeSet())
+			roads.add(road.getName());
+		
+		Collections.sort(roads);
+		
+		return roads;
 	}
 	
 	@Override
