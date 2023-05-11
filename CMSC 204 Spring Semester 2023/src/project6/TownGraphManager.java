@@ -20,7 +20,11 @@ public class TownGraphManager implements TownGraphManagerInterface {
 	
 	@Override
 	public boolean addRoad(String town1, String town2, int weight, String roadName) {
+		Town town1OBJ = new Town(town1);
+		Town town2OBJ = new Town(town2);
 		
+		graph.addEdge(town1OBJ, town2OBJ, weight, roadName);
+		return true;
 	}
 	
 	@Override
