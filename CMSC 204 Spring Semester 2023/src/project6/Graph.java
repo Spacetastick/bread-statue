@@ -162,6 +162,38 @@ public class Graph implements GraphInterface<Town, Road> {
 		return null;
 	}
 	
+	//added overloaded method for removeEdge for the implementation of deleteRoadConnection in TGM
+	public Road removeEdge(Town source, Town destination, String roadName) {
+		//checking if roadName is valid (not null)
+		if (roadName == null)
+			return null;
+		
+		//check if both vertices exist in graph
+		if (!this.adjList.containsKey(source) || !this.adjList.containsKey(destination))
+			return null;
+		
+		//check if the provided edge connects the provided vertices
+		ArrayList<Road> sourceRoads = this.adjList.get(source);
+		ArrayList<Road> destinationRoads = this.adjList.get(destination);
+		if (sourceRoads == null || destinationRoads == null)
+			return null;
+		
+		for (Road road : sourceRoads) {
+			if (road.getName().equals(roadName)) {
+				if (destinationRoads.contains(road)) {
+					sourceRoads.remove(road);
+					destinationRoads.remove(road);
+					
+					//removing from roadSet for live view requirement
+					this.roadSet.remove(road);
+					
+					return road;
+				}
+			}
+		}
+		return null;
+	}
+	
 	//these methods may not be implemented correctly because the input object is not necessarily the same as what is contained in the graph I think
 	//if the add and remove methods and others that have the formal u.equals(v) definition don't work, this is why
 	public boolean removeVertex(Town town) {

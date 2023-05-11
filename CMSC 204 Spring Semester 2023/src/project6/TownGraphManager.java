@@ -72,7 +72,7 @@ public class TownGraphManager implements TownGraphManagerInterface {
 	
 	@Override
 	public boolean deleteRoadConnection(String town1, String town2, String road) {
-		
+        return graph.removeEdge(new Town(town1), new Town(town2), road) != null ? true : false;
 	}
 	
 	@Override
