@@ -77,7 +77,7 @@ public class TownGraphManager implements TownGraphManagerInterface {
 	
 	@Override
 	public boolean deleteTown(String v) {
-		
+        return graph.removeVertex(new Town(v));
 	}
 	
 	@Override
